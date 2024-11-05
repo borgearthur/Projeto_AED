@@ -1,4 +1,4 @@
-# Projeto_AED
+# JOGO AED
 
 **Como instalar a lib:**
 
