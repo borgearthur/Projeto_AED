@@ -23,7 +23,7 @@ void initObjects() {
         objects[i].rect.h = 20;
         objects[i].rect.x = rand() % (800 - objects[i].rect.w);
         objects[i].rect.y = - (rand() % 600);
-        objects[i].speed = 2 + rand() % 5;
+        objects[i].speed = 1 + rand() % 3;
         objects[i].active = true;
     }
 }
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
     player.rect.h = 20;
     player.rect.x = (800 - player.rect.w) / 2;
     player.rect.y = 580;
-    player.speed = 7;
+    player.speed = 70;
 
     initObjects();
 
@@ -88,6 +88,8 @@ int main(int argc, char* argv[]) {
             player.rect.x = 800 - player.rect.w;
         }
 
+        bool game_over = false; // Flag para controle de fim de jogo
+
         // Atualizar objetos
         for (int i = 0; i < MAX_OBJECTS; i++) {
             if (objects[i].active) {
@@ -100,6 +102,11 @@ int main(int argc, char* argv[]) {
                 }
             }
 
+            // Verificar se o objeto caiu na parte inferior
+            if (objects[i].rect.y > 600) {
+                game_over = true; // Se algum objeto caiu, o jogo termina
+            }
+
             // Reiniciar objeto se necessário
             if (!objects[i].active || objects[i].rect.y > 600) {
                 objects[i].rect.x = rand() % (800 - objects[i].rect.w);
@@ -107,6 +114,11 @@ int main(int argc, char* argv[]) {
                 objects[i].speed = 2 + rand() % 5;
                 objects[i].active = true;
             }
+        }
+
+        // Se o jogo estiver terminado, saia do loop
+        if (game_over) {
+            running = false; // Para o jogo
         }
 
         // Renderização
@@ -136,5 +148,6 @@ int main(int argc, char* argv[]) {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
+    printf("Game Over!\n"); // Mensagem de fim de jogo
     return 0;
 }
