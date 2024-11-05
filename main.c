@@ -23,7 +23,7 @@ void initObjects() {
         objects[i].rect.h = 20;
         objects[i].rect.x = rand() % (800 - objects[i].rect.w);
         objects[i].rect.y = - (rand() % 600);
-        objects[i].speed = 1 + rand() % 3;
+        objects[i].speed = rand() % 2; 
         objects[i].active = true;
     }
 }
@@ -63,6 +63,7 @@ int main(int argc, char* argv[]) {
 
     bool running = true;
     SDL_Event event;
+    int score = 0; // Variável para controle de pontuação
 
     while (running) {
         // Processamento de eventos
@@ -98,7 +99,13 @@ int main(int argc, char* argv[]) {
                 // Verificar colisão com o jogador
                 if (SDL_HasIntersection(&player.rect, &objects[i].rect)) {
                     objects[i].active = false;
-                    // Incrementar pontuação (se desejar)
+                    score++; // Incrementar pontuação
+                    // Aumentar a velocidade dos objetos a cada 5 capturas
+                    if (score % 5 == 0) {
+                        for (int j = 0; j < MAX_OBJECTS; j++) {
+                            objects[j].speed++; // Aumenta a velocidade dos objetos
+                        }
+                    }
                 }
             }
 
@@ -106,12 +113,11 @@ int main(int argc, char* argv[]) {
             if (objects[i].rect.y > 600) {
                 game_over = true; // Se algum objeto caiu, o jogo termina
             }
-
             // Reiniciar objeto se necessário
             if (!objects[i].active || objects[i].rect.y > 600) {
                 objects[i].rect.x = rand() % (800 - objects[i].rect.w);
                 objects[i].rect.y = - (rand() % 600);
-                objects[i].speed = 2 + rand() % 5;
+                objects[i].speed = 1 + rand() % 2; // Também diminua a reinicialização da velocidade aqui (1-2)
                 objects[i].active = true;
             }
         }
@@ -148,6 +154,6 @@ int main(int argc, char* argv[]) {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    printf("Game Over!\n"); // Mensagem de fim de jogo
+    printf("Game Over! Pontuação: %d\n", score); // Mensagem de fim de jogo com a pontuação
     return 0;
 }
