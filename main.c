@@ -23,7 +23,7 @@ void initObjects() {
         objects[i].rect.h = 20;
         objects[i].rect.x = rand() % (800 - objects[i].rect.w);
         objects[i].rect.y = - (rand() % 600);
-        objects[i].speed = rand() % 2; 
+        objects[i].speed = rand() % 3; 
         objects[i].active = true;
     }
 }
