@@ -31,8 +31,13 @@ brew install sdl2
 
 **Como buildar o jogo:**
 
+```
 gcc main.c -o main -lSDL2
+```
 
 **Como executar:**
 
+```
 ./main
+```
+
