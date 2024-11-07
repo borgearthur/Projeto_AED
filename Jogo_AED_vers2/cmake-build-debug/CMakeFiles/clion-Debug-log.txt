@@ -1,0 +1,6 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2 -B /Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2/cmake-build-debug
+-- Raylib include dirs: /opt/homebrew/include
+-- Raylib libraries: /opt/homebrew/lib/libraylib.dylib
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2/cmake-build-debug

@@ -1,0 +1,3 @@
+/Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2/cmake-build-debug/CMakeFiles/AED_2024_2.dir
+/Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/tiagocavalcanti/CLionProjects/Jogo_AED_vers2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
